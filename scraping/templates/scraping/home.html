@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+    <form method="GET" action="">
+        <label>Город</label><br>
+        <input type="text" name="city"><br>
+        <label>Специальность</label><br>
+        <input type="text" name="language"><br>
+        <input type="submit" value="Поиск">
+    </form>
+
+        {% for obj in object_list %}
+            <div class="card my-3">
+              <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+              <div class="card-body">
+
+                <p class="card-text">{{ obj.description }}</p>
+                  <p>{{obj.city.name}} | {{obj.language.name}} |
+                      <small>{{ obj.timestamp|date:"d.m.Y"}}</small></p>
+              </div>
+            </div>
+        {% endfor %}
+
+
+  {% endblock %}
+
+
+
+  	
