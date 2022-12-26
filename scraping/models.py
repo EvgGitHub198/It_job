@@ -1,6 +1,9 @@
 from django.db import models
 from .utils import rus_to_eng
 
+def default_urls():
+    return {"hh": "", "rabota": "", "yandex": ""}
+
 # Create your models here.
 class City(models.Model):
     name = models.CharField(max_length=50,
@@ -41,7 +44,7 @@ class Language(models.Model):
 
 
 class Vacancy(models.Model):
-    url = models.URLField(unique=True)
+    url = models.URLField()
     title = models.CharField(max_length=250,
                              verbose_name='Загаловок вакансии')
     company = models.CharField(max_length=250, verbose_name='Компания')
@@ -54,6 +57,24 @@ class Vacancy(models.Model):
     class Meta:
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
+        ordering = ['-timestamp']
 
     def __str__(self):
         return self.title
+
+
+class Error(models.Model):
+    timestamp = models.DateField(auto_now_add=True)
+    data = models.JSONField()
+    def __str__(self):
+        return str(self.timestamp)
+
+
+class Url(models.Model):
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('Language', on_delete=models.CASCADE,
+                                 verbose_name='Язык программирования')
+    url_data = models.JSONField(default=default_urls)
+    class Meta:
+        unique_together = ('city', 'language')
+
