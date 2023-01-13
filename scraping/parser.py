@@ -29,10 +29,12 @@ def hh(url, city=None, language=None):
                 for div in div_lst:
                     title = div.find('h3')
                     company = div.find('div', class_='bloko-text')
-                    description = main_div.find('div', attrs={'data-qa': 'vacancy-serp__vacancy_snippet_responsibility'})
-                    href = main_div.find('div', attrs={'class': 'vacancy-serp-item-body__main-info'}).a['href']
-                    jobs.append({'title': title.text, 'company': company.text, 'description': description.text, 'url': href,
-                                 'city_id': city, 'language_id': language})
+                    description = div.find('div', attrs={'data-qa': 'vacancy-serp__vacancy_snippet_responsibility'})
+                    if description:
+                        href = div.find('a')['href']
+                        jobs.append({'title': title.text, 'company': company.text, 'description': description.text, 'url': href,
+                                     'city_id': city, 'language_id': language})
+
 
             else:
                 errors.append({'url': url, 'title': "Div doesn't exist "})
@@ -109,7 +111,7 @@ def yandex(url, city=None, language=None):
     return jobs, errors
 
 
-#
+
 # if __name__ == '__main__':
 #     url = 'https://spb.hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=python&excluded_text=&area=1&salary=&currency_code=RUR&experience=doesNotMatter&order_by=relevance&search_period=0&items_on_page=50'
 #     jobs, errors = hh(url)

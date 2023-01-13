@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
   {% block content %}
-
+<div class="row">
+    <div class="col"><h2 class="text-center">Сервис по сбору вакансий</h2>
+    </div>
+</div>
         <div class="row my-3">
             <div class="col-md-6 mx-auto">
-                <form method="GET" action="">
+                <h4>Для просмотра доступных вакансий, заполните форму</h4>
+                <form method="GET" action="{% url 'list' %}">
                 <div class="form-group">
                 {{ form.as_p }}
                 </div>
@@ -12,27 +16,6 @@
                 </form>
             </div>
         </div>
-
-
-
-
-
-        {% for obj in object_list %}
-            <div class="card my-3">
-              <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-              <div class="card-body">
-                <h4>{{obj.company}}</h4>
-                <p class="card-text">{{ obj.description }}</p>
-                  <p>{{obj.city.name}} | {{obj.language.name}} |
-                      <small>{{ obj.timestamp|date:"d.m.Y"}}</small></p>
-              </div>
-            </div>
-                    {% empty %}
-                    <h3>Пусто!</h3>
-
-        {% endfor %}
-
-
   {% endblock %}
 
 
