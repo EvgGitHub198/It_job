@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASE_URL = 'postgresql://postgres:g1ccuCRIUpTqwtjZgXF6@containers-us-west-180.railway.app:6849/railway'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -76,9 +76,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'wYdxm07v4AGZZnDv17ox',
+        'HOST': 'containers-us-west-176.railway.app',
+        'PORT': '6768',
+
+    }
 }
-CSRF_TRUSTED_ORIGINS = ['https://web-production-0868.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = ['https://web-production-0868.up.railway.app']
 
 
 
