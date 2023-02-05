@@ -131,3 +131,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mishagon02@gmail.com'
 EMAIL_HOST_PASSWORD = 'nchhfimsvyarssib'
 EMAIL_PORT = 587
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

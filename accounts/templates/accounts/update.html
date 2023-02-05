@@ -17,16 +17,31 @@
         </div>
     </div>
 
-    <div class="row my-5">
+    <div class="row my-4">
         <div class="col-md-6 mx-auto">
             <h4>Форма с обратной свзяью</h4>
-            <p>Oтправьте свои данные, если не нашли из предложенных выше, администрация учтет ваши пожелания</p>
-            <form method="POST" action="{% url 'accounts:contact' %}"> {% csrf_token %}
-                <div class="form-group">
-                {{ contact_form.as_p }}
-                </div>
-                <button type="submit" class="btn btn-primary">Отправить</button>
+
+
+                    <p>
+                      <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapsed" aria-expanded="false" aria-controls="collapseExample">
+                        Показать форму
+                      </button>
+                    </p>
+
+                    <div class="collapse" id="collapsed">
+                      <div class="card card-body">
+                          <p>Oтправьте свои данные, если не нашли вариант из предложенных выше, администрация учтет ваши пожелания</p>
+                            <form method="POST" action="{% url 'accounts:contact' %}"> {% csrf_token %}
+                                <div class="form-group">
+                                {{ contact_form.as_p }}
+                                </div>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                            </form>
+                      </div>
+                    </div>
+
 
         </div>
     </div>
   {% endblock %}
+
