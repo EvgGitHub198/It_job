@@ -86,7 +86,7 @@ DATABASES = {
 
     }
 }
-# CSRF_TRUSTED_ORIGINS = ['https://web-production-0868.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-83cd.up.railway.app']
 
 
 
