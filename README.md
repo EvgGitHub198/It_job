@@ -1,1 +1,1 @@
-# Its a project with finding a job for the programmers.
+# Its a project with searching jobs for the programmers.
