@@ -28,7 +28,7 @@ if users_dct:
     for pair in users_dct.keys():
         params['city_id__in'].append(pair[0])
         params['language_id__in'].append(pair[1])
-    qs = Vacancy.objects.filter(**params).values()
+    qs = Vacancy.objects.filter(**params).values()[:5]
     vacancies = {}
     for i in qs:
         vacancies.setdefault((i['city_id'], i['language_id']), [])

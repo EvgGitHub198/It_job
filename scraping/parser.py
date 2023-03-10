@@ -113,8 +113,8 @@ def yandex(url, city=None, language=None):
 
 
 # if __name__ == '__main__':
-#     url = 'https://spb.hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=python&excluded_text=&area=1&salary=&currency_code=RUR&experience=doesNotMatter&order_by=relevance&search_period=0&items_on_page=50'
-#     jobs, errors = hh(url)
-#     h = codecs.open('work.txt', 'w', 'utf-8')
+#     url = 'https://www.rabota.ru/vacancy/?query=python&sort=relevance'
+#     jobs, errors = rabota(url)
+#     h = codecs.open('working.txt', 'w', 'utf-8')
 #     h.write(str(jobs))
 #     h.close()

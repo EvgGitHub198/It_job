@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: always
+    hostname: db
+
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bash -c "python manage.py migrate --noinput &&
+                 python manage.py runserver 0.0.0.0:8000"
+
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  postgres_data:
